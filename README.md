@@ -8,7 +8,7 @@
 
 *Italic*
 
-** Bold **
+**Bold**
 
 **Bold an _italic_**
 
