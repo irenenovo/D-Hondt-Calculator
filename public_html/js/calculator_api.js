@@ -95,7 +95,7 @@ var octopus = {
 
         var newArr = {};
 
-        //ahora deberemos coger los 5 más altos
+        //ahora deberemos coger los n votos más altos
         for (var i = 0; i < this.getSeats(); i++) {
             var v = arr.pop();
             var name = v[1];

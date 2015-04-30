@@ -9,12 +9,12 @@ and open the template in the editor.
 */
 
 :invalid { 
-    border-color: #e88;
+    /*border-color: #e88;
     -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
     -moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
     -o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
     -ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
-    box-shadow:0 0 5px rgba(255, 0, 0, .8);
+    box-shadow:0 0 5px rgba(255, 0, 0, .8);*/
 }
 
 :required {
@@ -24,6 +24,10 @@ and open the template in the editor.
     -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
     -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
     box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+}
+
+h1{
+    text-align: center;
 }
 
 form {
