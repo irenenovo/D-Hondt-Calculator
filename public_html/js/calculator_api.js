@@ -71,14 +71,14 @@ var octopus = {
             var vote = model.votes[i];
             //comprobamos que pase el umbral mínimo para añadirlo al array
             if (this.checkVotes(vote)) {
-                console.log("NO ignora los votos de " +vote.name);
+                console.log("NO ignora los votos de " + vote.name);
                 for (var j = 1; j <= model.seats; j++) {
                     var divVote = vote.votes / j;
 
                     arr.push([j, vote.name, divVote]);
                 }
-            }else{
-                console.log("ignora los votos de " +vote.name);
+            } else {
+                console.log("ignora los votos de " + vote.name);
             }
         }
 
