@@ -12,6 +12,8 @@
 
 **Bold an _italic_**
 
+~~Strikethrough~~
+
 * List1
 * List1
 
@@ -24,6 +26,7 @@
 ```
 multiple
 lines
+var a = 0;
 ````
 
 [link1](link2)
