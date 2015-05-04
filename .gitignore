@@ -1,2 +1,5 @@
 public_html/bower_components/
 .DS_Store
+/bower_components/
+/public_html/myHybridAppFolder/
+/public_html/node_modules/
