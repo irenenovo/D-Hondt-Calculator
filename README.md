@@ -1,8 +1,41 @@
 # D-Hondt-Calculator
 
-## h2
+## Installation
 
-### h3
+```
+bower install D-Hondt-Calculator
+````
+
+## Usage
+
+Get/set white votes: 
+
+```
+var Whitevotes = octopus.getWhiteVotes();
+octopus.setWhiteVotes(5);
+```
+
+Get/set seats: 
+
+```
+var seats = octopus.getSeats();
+octopus.setSeats(5);
+```
+
+Get/set strip: 
+
+```
+var strip = octopus.getStrip();
+octopus.setStrip(5);
+```
+
+Insert/delete/vote:
+
+```
+octopus.insertVote(vote)
+var vote = octopus.getVote(0);
+octopus.deleteVote(0);
+```
 
 > Blockquotes
 
@@ -23,13 +56,5 @@
 1. List3
 2. List3
 
-```
-multiple
-lines
-var a = 0;
-````
 
 [link1](link2)
-
-
-Probando cambiar Readme.md
