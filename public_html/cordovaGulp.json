@@ -1,0 +1,24 @@
+{
+    "cordova": [
+        [
+            "create",
+            "demo2",
+            "com.irene.demo",
+            "probando"
+        ],
+        [
+            "platform",
+            "add",
+            "ios",
+            "android",
+            "browser"
+        ],
+        [
+            "plugin",
+            "add",
+            "org.apache.cordova.device",
+            "org.apache.cordova.geolocation",
+            "org.apache.cordova.console"
+        ]
+    ]
+}
