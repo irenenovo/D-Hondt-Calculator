@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Calculadora</title>
+        <title>Calculadora D'Hondt</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/index.css" rel="stylesheet"/>
@@ -9,29 +9,31 @@
     </head>
     <body>
         <form id="calculator">
-            <h1>Calculadora</h1>
-            <label>Número de escaños a repartir:</label>
-            <input type="number" id="seats" name="seats" placeholder="0" required>
+            <h1>Calculadora D'Hondt</h1>
+            <div id="data">
+                <label>Número de escaños a repartir:</label>
+                <input type="number" id="seats" name="seats" placeholder="0" required>
 
-            <label>Listón electoral (%):</label>
-            <input type="number" id="strip" name="strip" placeholder="3" required>
+                <label>Listón electoral (%):</label>
+                <input type="number" id="strip" name="strip" placeholder="3" required>
 
-            <label>Votos en blanco:</label>
-            <input type="number" id="white_votes" name="white_votes" placeholder="0" required>
+                <label>Votos en blanco:</label>
+                <input type="number" id="white_votes" name="white_votes" placeholder="0" required>
 
-            <label>Nombre del partido:</label>
-            <input type="text" id="name" name="name" placeholder="Nombre del partido">
+                <label>Nombre del partido:</label>
+                <input type="text" id="name" name="name" placeholder="Nombre del partido">
 
-            <label>Votos:</label>
-            <input type="number" id="votes" name="votes" placeholder="0">
+                <label>Votos:</label>
+                <input type="number" id="votes" name="votes" placeholder="0">
 
-            <input type="button" id="addNew" value="Añadir partido" /> 
+                <input type="button" id="addNew" value="Añadir partido" />
+                <input type="submit" value="Repartir escaños" /> 
+            </div>
 
-            <div id="explain"></div>
+            <div id="explain"><b>Listado de partidos:<br/><br></b></div>
 
-            <input type="submit" value="Repartir escaños" /> 
-
-            <div id="result"></div>
+            <div id="result"><b>Resultado final:<br/><br></b></div>
+            <input id="goBack" type="button" value="Volver a empezar" />
         </form>
 
         <script type="text/javascript" charset="utf-8" src="../js/calculator_api.js"></script>

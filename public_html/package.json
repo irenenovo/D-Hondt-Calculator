@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Irene",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cca": "^0.6.0",
+    "cordova": "^5.0.0",
+    "grunt": "^0.4.5",
+    "grunt-cordovacli": "^0.7.1",
+    "gulp": "^3.8.11",
+    "gulp-cordova": "^0.1.2"
+  }
 }

@@ -6,7 +6,7 @@ var model = {
     votes: []
 };
 
-var octopus = {
+var dhondt = {
     checkVotes: function (vote) {
         var minVotes = this.getTotalVotes() * 0.05;
         if (vote.votes >= minVotes) {
@@ -44,8 +44,8 @@ var octopus = {
     getVote: function (index) {
         return model.votes[index];
     },
-    getStringVote: function (index) {
-        return "Partido: " + model.votes[index].name + ", votos: " + model.votes[index].votes;
+    getHTMLVote: function (index) {
+        return "<b>" + model.votes[index].name + "</b>: " + model.votes[index].votes + " votos.";
     },
     getVotesLenght: function () {
         return model.votes.length;
@@ -107,5 +107,12 @@ var octopus = {
         }
         console.log(newArr);
         return newArr;
+    },
+    getSeatVotesHTML: function (newArr) {
+        var html = "";
+        for (a in newArr) {
+            html += "El <b>" + a + "</b> obtiene <b>" + newArr[a] + "</b> escaños.<br>";
+        }
+        return html;
     }
 };

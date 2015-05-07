@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : irenenovo
 */
 
+*{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 :invalid { 
     /*border-color: #e88;
     -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
@@ -28,18 +32,20 @@ and open the template in the editor.
 
 h1{
     text-align: center;
+    background: #ddf;
+    padding: 10px;
+    border:2px solid #333;
 }
 
 form {
-    width:300px;
+    width:350px;
     margin: 20px auto;
 }
 
 input {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border:1px solid #ccc;
     font-size:20px;
-    width:300px;
+    width:100%;
     min-height:30px;
     display:block;
     margin-bottom:15px;
@@ -56,4 +62,24 @@ input {
 input[type=submit] {
     background:none;
     padding:10px;
+}
+
+#explain{
+    background: #F8EFFB;
+    padding: 10px;
+    border:1px solid #CCC;
+    margin-bottom: 15px;
+    display: none;
+}
+
+#result{
+    background: #FBFBEF;
+    padding: 10px;
+    border:1px solid #CCC;
+    margin-bottom: 15px;
+    display: none;
+}
+
+#goBack{
+    display: none;
 }
