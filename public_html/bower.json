@@ -1,6 +1,6 @@
 {
-  "name": "Calculator",
-  "version": "0.0.0",
+  "name": "D-Hondt-Calculator",
+  "version": "1.0.0",
   "license": "MIT",
   "ignore": [
     "**/.*",

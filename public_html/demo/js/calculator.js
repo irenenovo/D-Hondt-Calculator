@@ -38,7 +38,6 @@ $(function () {
                         $("#data").hide();
                         $("#result").show();
                         $("#goBack").show();
-
                         $("#result").append(dhondt.getSeatVotesHTML(dhondt.getSeatVotes()));
                     } else {
                         alert("No has introducido ningún partido");

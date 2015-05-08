@@ -37,9 +37,18 @@ h1{
     border:2px solid #333;
 }
 
-form {
-    width:350px;
-    margin: 20px auto;
+@media screen and (max-width: 750px) {
+    #calculator{
+        width: 60%;
+        margin: 20px auto;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    #calculator {
+        width: 40%;
+        margin: 20px auto;
+    }
 }
 
 input {

@@ -66,6 +66,9 @@ var dhondt = {
         model.strip = newStrip;
     },
     getSeatVotes: function () {
+
+        //primero ordenamos los partidos por número de votos
+
         var arr = [];
         for (var i = 0; i < model.votes.length; i++) {
             var vote = model.votes[i];
@@ -86,23 +89,28 @@ var dhondt = {
         arr.sort((function (index) {
             return function (a, b) {
                 var w = (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
-                console.log("devuelve " + w);
+                //console.log("devuelve " + w + " "+ a);
+                if (w === 0) {
+                    a.draw = "empate con " + b;
+                    b.draw = "empate con " + a;
+                }
+                //console.log("devuelve 2 " + w + " "+ a);
                 return w;
             };
         })(2));
 
         console.log(arr);
 
-        var newArr = {};
+        var newArr = {assigned: {}};
 
         //ahora deberemos coger los n votos más altos
         for (var i = 0; i < this.getSeats(); i++) {
             var v = arr.pop();
             var name = v[1];
-            if ((newArr).hasOwnProperty(name)) {
-                newArr[name] += 1;
+            if ((newArr.assigned).hasOwnProperty(name)) {
+                newArr.assigned[name] += 1;
             } else {
-                newArr[name] = 1;
+                newArr.assigned[name] = 1;
             }
         }
         console.log(newArr);
@@ -110,8 +118,8 @@ var dhondt = {
     },
     getSeatVotesHTML: function (newArr) {
         var html = "";
-        for (a in newArr) {
-            html += "El <b>" + a + "</b> obtiene <b>" + newArr[a] + "</b> escaños.<br>";
+        for (a in newArr.assigned) {
+            html += "El <b>" + a + "</b> obtiene <b>" + newArr.assigned[a] + "</b> escaños.<br>";
         }
         return html;
     }

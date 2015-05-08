@@ -12,8 +12,11 @@
     "cca": "^0.6.0",
     "cordova": "^5.0.0",
     "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-cordova": "^0.1.18",
     "grunt-cordovacli": "^0.7.1",
     "gulp": "^3.8.11",
-    "gulp-cordova": "^0.1.2"
+    "gulp-cordova": "^0.1.2",
+    "gulp-uglify": "^1.2.0"
   }
 }
