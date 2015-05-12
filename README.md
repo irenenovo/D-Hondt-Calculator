@@ -42,11 +42,11 @@ dhondt.deleteVote(index);
 
 Returns a JSON with the results of the strips per political party
 ```
-var results = getSeatVotes();
+var results = dhondt.getSeatVotes();
 ```
 
 Returns an HTML with the results of the strips per political party
 ```
-var htmlResult = getSeatVotesHTML(results);
+var htmlResult = dhondt.getSeatVotesHTML(results);
 ```
 
