@@ -8,62 +8,45 @@ JavaScript library that allows using the **D'Hondt method**.
 bower install D-Hondt-Calculator
 ````
 
+## Data structure
+
+For example:
+
+```
+var voting = {
+	whiteVotes: 200,
+	seats: 5,
+	strip: 5,
+	votes: [{name: "PP", votes: 300} {name: "PSOE", votes: 300} ]
+}
+```
+
 ## Usage
 
-Get/set **white votes**: 
-
+Create/Get the **voting**:
 ```
-var Whitevotes = octopus.getWhiteVotes();
-octopus.setWhiteVotes(5);
-```
-
-Get/set **seats**: 
-
-```
-var seats = octopus.getSeats();
-octopus.setSeats(5);
+dhondt.voting(whiteVotes, seats, strip, votes);
+var voting = dhondt.getVoting();
 ```
 
-Get/set **strip**: 
-
+Check if is the number of votes is valid
 ```
-var strip = octopus.getStrip();
-octopus.setStrip(5);
+var isValid = dhondt.checkVotes(votes);
 ```
 
-Insert/delete/get **vote**:
-
+Get/Delete **votes**
 ```
-octopus.insertVote(vote)
-var vote = octopus.getVote(0);
-octopus.deleteVote(0);
+var vote = dhondt.getVote(index);
+dhondt.deleteVote(index);
 ```
 
-Get votes and votes length
+Returns a JSON with the results of the strips per political party
 ```
-var votes = octopus.getVotes();
-var lenght = octopus.getVotesLenght();
+var results = getSeatVotes();
 ```
 
+Returns an HTML with the results of the strips per political party
+```
+var htmlResult = getSeatVotesHTML(results);
+```
 
-> Blockquotes
-
-*Italic*
-
-**Bold**
-
-**Bold an _italic_**
-
-~~Strikethrough~~
-
-* List1
-* List1
-
-- List2
-- List2
-
-1. List3
-2. List3
-
-
-[link1](link2)
