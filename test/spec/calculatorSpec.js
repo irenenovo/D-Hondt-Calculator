@@ -1,28 +1,27 @@
 
 describe('Votes', function () {
 
-    var vote;
+    var vote, votes;
 
     beforeEach(function () {
         //inicializamos con set de datos
-        dhondt.setWhiteVotes(100);
-        dhondt.setStrip(5);
-        dhondt.setSeats(100);
+
         vote = {name: "PSOE", votes: 100};
+        votes = [vote];
+
+        dhondt.voting(100, 100, 5, votes);
     });
 
     //caso 1: comprobar que los datos estén bien metidos
     it('should only introduce int numbers', function () {
 
-        expect(vote.votes).toMatch(/\d{1,}/);
+        expect(dhondt.getVoting().votes[0].votes).toMatch(/\d{1,}/);
     });
 
     //caso 2: comprobar que puede insertar una votación
     it('should be able to add a vote', function () {
 
-        dhondt.insertVote(vote);
-
-        expect(dhondt.getVote(0)).toBe(vote);
+        expect(dhondt.getVoting().votes[0]).toBe(vote);
     });
 
     //caso 3: comprobar que se ha borrado bien una votación
@@ -30,7 +29,7 @@ describe('Votes', function () {
 
         dhondt.deleteVote(0);
 
-        expect(dhondt.getVote(0)).not.toBeDefined();
+        expect(dhondt.getVoting().votes[0]).not.toBeDefined();
     });
 
 });
@@ -39,22 +38,15 @@ describe('Calculator', function () {
 
     var vote1, vote2;
 
-    beforeEach(function () {
-
-        dhondt.clearData();
-
-        //inicializamos con set de datos
-        dhondt.setWhiteVotes(100);
-        dhondt.setStrip(5);
-        dhondt.setSeats(5);
-
-    });
-
     //caso 1: descartar partido si tiene menos de 5% de los votos totales + blancos
-    it('should discard votes with less than ' + dhondt.getStrip() + '%', function () {
+    it('should discard votes with less than  %', function () {
+
         vote1 = {name: "PP", votes: 300};
-        dhondt.setSeats(5);
-        dhondt.insertVote(vote1);
+
+        var votes = [vote1];
+
+        dhondt.voting(100, 5, 5, votes);
+
         expect(dhondt.checkVotes(vote1)).toBe(true);
     });
 
@@ -65,8 +57,9 @@ describe('Calculator', function () {
         vote1 = {name: "PP", votes: 300};
         vote2 = {name: "PSOE", votes: 420};
 
-        dhondt.insertVote(vote1);
-        dhondt.insertVote(vote2);
+        var votes = [vote1, vote2];
+
+        dhondt.voting(100, 5, 5, votes);
 
         //resultado que esperamos
         var result = {assigned: {PSOE: 3, PP: 2}};
@@ -81,8 +74,9 @@ describe('Calculator', function () {
         vote1 = {name: "PP", votes: 10};
         vote2 = {name: "Podemos", votes: 1000};
 
-        dhondt.insertVote(vote1);
-        dhondt.insertVote(vote2);
+        var votes = [vote1, vote2];
+
+        dhondt.voting(100, 5, 5, votes);
 
         //resultado que esperamos
         var result = {assigned: {Podemos: 5}};
@@ -95,15 +89,7 @@ describe('Calculator', function () {
 
 describe('Draw cases', function () {
 
-    beforeEach(function () {
-
-        dhondt.clearData();
-
-        //inicializamos con set de datos
-        dhondt.setWhiteVotes(5);
-        dhondt.setStrip(5);
-
-    });
+    var vote1, vote2, vote3, vote4, vote5;
 
     // caso de empate 1-> debería ganar el escaño el PSOE porque tiene más votos
     it('In case of draw, PSOE should win the seat because it has more votes', function () {
@@ -111,9 +97,10 @@ describe('Draw cases', function () {
         //votos de prueba
         vote1 = {name: "PP", votes: 200};
         vote2 = {name: "PSOE", votes: 400};
-        dhondt.setSeats(2);
-        dhondt.insertVote(vote1);
-        dhondt.insertVote(vote2);
+
+        var votes = [vote1, vote2];
+
+        dhondt.voting(100, 2, 5, votes);
 
         var result = {assigned: {PSOE: 2}};
 
@@ -122,25 +109,24 @@ describe('Draw cases', function () {
     });
 
     // caso de empate 2-> debería haber sorteo entre PP y PSOE
-    it('should be a draw in case of draw', function () {
+    it('should be a draw between A and B', function () {
 
         //votos de prueba
         vote1 = {name: "PP", votes: 400};
         vote2 = {name: "PSOE", votes: 400};
-        dhondt.setSeats(3);
-        dhondt.insertVote(vote1);
-        dhondt.insertVote(vote2);
+
+        var votes = [vote1, vote2];
+
+        dhondt.voting(100, 3, 5, votes);
 
         var result = {assigned: {PSOE: 1, PP: 1}, draw: {seats: 1, draw: ["PP", "PSOE"]}};
 
-        expect(dhondt.getSeatVotes()).toEqual(result);
+        expect(dhondt.getVoting().seal()).toEqual(result);
 
     });
 
     // caso de empate 3-> debería haber sorteo entre C, D y E
     it('should be a draw between C, D and E', function () {
-
-        dhondt.setSeats(6);
 
         //votos de prueba
         vote1 = {name: "A", votes: 900};
@@ -149,15 +135,13 @@ describe('Draw cases', function () {
         vote4 = {name: "D", votes: 450};
         vote5 = {name: "E", votes: 450};
 
-        dhondt.insertVote(vote1);
-        dhondt.insertVote(vote2);
-        dhondt.insertVote(vote3);
-        dhondt.insertVote(vote4);
-        dhondt.insertVote(vote5);
+        var votes = [vote1, vote2, vote3, vote4, vote5];
+
+        dhondt.voting(100, 6, 5, votes);
 
         var result = {assigned: {A: 2, B: 2}, draw: {seats: 2, draw: ["C", "D", "E"]}};
 
-        expect(dhondt.getSeatVotes()).toEqual(result);
+        expect(dhondt.getVoting().seats).toEqual(result);
 
     });
 

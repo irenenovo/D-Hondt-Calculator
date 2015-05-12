@@ -2,6 +2,9 @@ $(function () {
 
     var view = {
         init: function () {
+            
+            var arrVoting = [];
+            
             //funcionalidad al hacer click en "Añadir partido"
             $("#addNew").on("click", function () {
                 var name = $("#name").val();
@@ -9,12 +12,11 @@ $(function () {
                 //comprobamos si los datos son correctos
                 if (name !== "" && !isNaN(votes)) {
                     var vote = {name: name, votes: votes};
-                    dhondt.insertVote(vote);
+                    arrVoting.push(vote);
                     $("#explain").show();
                     $("#name").val("");
                     $("#votes").val("");
-
-                    $("#explain").append("<div>" + dhondt.getHTMLVote(dhondt.getVotesLenght() - 1) + "</div>");
+                    $("#explain").append("<div>" + "<b>" + vote.name + "</b>: " + vote.votes + " votos." + "</div>");
                 } else {
                     alert("Revisa los datos");
                 }
@@ -30,11 +32,10 @@ $(function () {
                     alert("Completa todos los campos");
                 } else {
                     //comprobamos que se haya introducido algún partido político
-                    if (dhondt.getVotesLenght() > 0) {
-                        dhondt.setWhiteVotes(wVotes);
-                        dhondt.setStrip(strip);
-                        dhondt.setSeats(seats);
-
+                    if (arrVoting.length > 0) {
+                        
+                        dhondt.voting(wVotes, seats, strip, arrVoting);
+                        
                         $("#data").hide();
                         $("#result").show();
                         $("#goBack").show();
