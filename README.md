@@ -50,4 +50,4 @@ Returns an HTML with the results of the strips per political party
 var htmlResult = dhondt.getSeatVotesHTML(results);
 ```
 
-https://travis-ci.org/irenenovo/D-Hondt-Calculator.svg
+![alt tag] (https://travis-ci.org/irenenovo/D-Hondt-Calculator.svg)
